@@ -36,6 +36,8 @@ def loadConfig():
     
     return activation_key, target_color, smoothness, delay
 
+
+
 activation_key, target_color, smoothness, delay = loadConfig()
 print(f"Activation Key: {activation_key}")
 print(f"Target Color: {target_color}")
@@ -52,9 +54,9 @@ def findColor(target_color, tolerance=10, smoothness=0.2, delay=0.05):
 
         if np.any(match_mask):
             y, x = np.unravel_index(np.argmax(match_mask), match_mask.shape)
-            pyautogui.moveTo(x, y, duration=smoothness)  # Move smoothly to the target
+            pyautogui.moveTo(x, y, duration=smoothness)  
             pyautogui.click()
-            return True  # Clicked, exit the function
+            return True  
 
         time.sleep(delay)
 if __name__ == "__main__":
@@ -62,9 +64,9 @@ if __name__ == "__main__":
 
     while True:
         if keyboard.is_pressed('esc'):
-            print("Script stopped.")
+            print("Script stopped")
             break
 
         if keyboard.is_pressed(activation_key):
             if findColor(target_color, smoothness=smoothness, delay=delay):
-                print("Clicked")
+                print("<Clicked>")
